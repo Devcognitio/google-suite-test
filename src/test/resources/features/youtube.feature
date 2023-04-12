@@ -1,9 +1,11 @@
-Feature: Youtube
-  As a web user
-  I want to use Youtube
-  to watch my favorite videos and listen to music
+#language: es
 
-  Scenario: Search an existing video
-    Given that Mike wants to watch a video
-    When he searches the video Beethoven Symphony 7 + Hubble images
-    Then he should see at least 1 video listed
+Característica: Youtube
+  Como usuario web
+  Quiero usar Youtube
+  para mirar mis videos favoritos y escuchar música
+
+  Escenario: Buscar un video existente
+    Dado que Mike quiere buscar un video
+    Cuando el busca Beethoven Symphony 7 + Hubble images
+    Entonces el debería al menos 1 video listed

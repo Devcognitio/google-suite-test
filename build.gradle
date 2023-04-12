@@ -3,42 +3,39 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
 
-group 'google-test-suite'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
+defaultTasks 'clean', 'test', 'aggregate'
 
 repositories {
-    mavenLocal()
-    jcenter()
+    mavenCentral()
 }
 
 buildscript {
     repositories {
-        mavenLocal()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.40")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.2.0")
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-        force "io.cucumber:cucumber-core:4.2.0"
-    }
-}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 ext{
-    serenityVersion = '2.0.40'
-    serenityCucumberVersion = '1.0.4'
+    serenityVersion = '3.5.1'
 }
 
 dependencies {
-    testImplementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
-    testImplementation "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion"
+    testImplementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-junit5:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-ensure:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityVersion"
 
-    implementation "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion"
-    implementation "net.serenity-bdd:serenity-cucumber4:$rootProject.ext.serenityCucumberVersion"
-    implementation 'net.serenity-bdd:serenity-screenplay-webdriver:1.1.36'
 }
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
