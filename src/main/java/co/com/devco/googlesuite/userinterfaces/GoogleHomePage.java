@@ -5,6 +5,6 @@ import net.serenitybdd.screenplay.targets.Target;
 
 public class GoogleHomePage extends PageObject {
 	
-	public static final Target POP_UP = Target.the("Privacy Pop Up").locatedBy("//a[@class='gb_Ba gb_Cd gb_ld']");
+	public static final Target POP_UP = Target.the("Pop Up de privacidad").locatedBy("//a[@class='gb_Ba gb_Cd gb_ld']");
 
 }
