@@ -8,4 +8,4 @@ Característica: Youtube
   Escenario: Buscar un video existente
     Dado que Mike quiere buscar un video
     Cuando el busca Beethoven Symphony 7 + Hubble images
-    Entonces el debería al menos 1 video listed
+    Entonces el debería ver al menos 1 video listado
