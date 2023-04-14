@@ -28,7 +28,6 @@ ext{
 dependencies {
     testImplementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion",
             "net.serenity-bdd:serenity-junit5:$rootProject.ext.serenityVersion",
-            "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion",
             "net.serenity-bdd:serenity-ensure:$rootProject.ext.serenityVersion",
             "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityVersion"
     implementation "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion",

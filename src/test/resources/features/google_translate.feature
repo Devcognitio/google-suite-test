@@ -18,3 +18,4 @@ Característica: Traductor de Google
     Dado que Susan quiere traducir una palabra
     Cuando ella traduce la palabra はじめまして del Japonés al Inglés
     Entonces ella debería ver la palabra Nice to meet you en la pantalla
+
