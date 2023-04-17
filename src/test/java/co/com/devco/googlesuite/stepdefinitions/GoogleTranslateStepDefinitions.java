@@ -1,7 +1,9 @@
 package co.com.devco.googlesuite.stepdefinitions;
 
+import co.com.devco.googlesuite.questions.LaPalabraTraducida;
 import co.com.devco.googlesuite.tasks.AbrirLa;
 import co.com.devco.googlesuite.tasks.Ir;
+import co.com.devco.googlesuite.tasks.Traducir;
 import io.cucumber.java.Before;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
@@ -10,7 +12,11 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
 import static co.com.devco.googlesuite.userinterfaces.GoogleAppsComponent.GOOGLE_TRANSLATE;
+import static net.serenitybdd.screenplay.EventualConsequence.eventually;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.equalTo;
 
 public class GoogleTranslateStepDefinitions {
 
@@ -27,16 +33,16 @@ public class GoogleTranslateStepDefinitions {
 		);
 	}
 
-	@Cuando("ella traduce la palabra cheese del Inglés al Español")
-	public void ellaTraduceLaPalabraCheeseDelInglésAlEspañol() {
-
-
+	@Cuando("ella traduce la palabra {word} del {word} al {word}")
+	public void ellaTraduceUnaPalabra(String palabra, String lenguajeOrigen, String lenguajeDestino) {
+		theActorInTheSpotlight().attemptsTo(
+				Traducir.laPalabra(palabra, lenguajeOrigen, lenguajeDestino)
+		);
 	}
 
-	@Entonces("ella debería ver la palabra queso en la pantalla")
-	public void ellaDeberíaVerLaPalabraQuesoEnLaPantalla() {
-
-
+	@Entonces("ella debería ver la palabra {} en la pantalla")
+	public void ellaDeberiaVerLaPalabraTraducidaEnLaPantalla(String palabraTraducida) {
+		theActorInTheSpotlight().should(eventually(seeThat(LaPalabraTraducida.es(), equalTo(palabraTraducida))));
 	}
 
 
